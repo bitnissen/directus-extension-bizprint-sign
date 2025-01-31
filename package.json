@@ -2,7 +2,7 @@
 	"name": "directus-extension-bizprint-sign",
 	"description": "Sign payloads for use with BizPrint REST API",
 	"icon": "extension",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"keywords": [
 		"directus",
 		"directus-extension",
