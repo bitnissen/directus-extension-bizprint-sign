@@ -24,8 +24,17 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Archive dist folder
-        run: zip -r dist.zip dist/
+      - name: Create a folder named `directus-extension-bizprint-sign`
+        run: mkdir -p directus-extension-bizprint-sign
+
+      - name: Copy dist folder to `directus-extension-bizprint-sign`
+        run: cp -r dist directus-extension-bizprint-sign
+
+      - name: Copy package.json to `directus-extension-bizprint-sign`
+        run: cp package.json directus-extension-bizprint-sign
+
+      - name: Archive directus-extension-bizprint-sign
+        run: zip -r directus-extension-bizprint-sign.zip directus-extension-bizprint-sign
 
       - name: Create GitHub Release
         id: create_release
@@ -44,6 +53,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist.zip
-          asset_name: dist.zip
-          asset_content_type: application/gzip
+          asset_path: ./directus-extension-bizprint-sign.zip
+          asset_name: directus-extension-bizprint-sign.zip
+          asset_content_type: application/zip
